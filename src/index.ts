@@ -34,16 +34,25 @@ AppDataSource.initialize()
 					<thead>
 						<tr>
 							<th>id</th>
-							<th>loc</th>
+							<th>lat</th>
+							<th>lng</th>
 						</tr>
 					</thead>
 					<tbody>
 					${posts
 						.map(
-							({ id, loc: { x, y } }: { id: string; loc: { x: number; y: number } }) => `
+							({
+								id,
+								loc: { x: lat },
+								loc: { y: lng },
+							}: {
+								id: string;
+								loc: { x: number; y: number };
+							}) => `
 					<tr>
 						<td>${id}</td>
-						<td>${x}, ${y}</td>
+						<td>${lat}</td>
+						<td>${lng}</td>
 					</tr>
 					`,
 						)
